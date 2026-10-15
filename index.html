@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d2924">
+<title>InviteMe — Wedding Invitation</title>
+<style>
+:root{--green:#103b32;--deep:#0b2823;--gold:#c7a45b;--cream:#fffaf0;--ink:#24352e;--muted:#6d786f;--rose:#e8d5c3}
+*{box-sizing:border-box}body{margin:0;background:#f4efe5;color:var(--ink);font-family:Georgia,"Times New Roman",serif}button,input,textarea,select{font:inherit}button{cursor:pointer}
+header{background:var(--deep);color:#fff8e8;padding:17px 5vw;display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:Arial,sans-serif}header .brand{font-size:1.35rem;letter-spacing:.06em;font-weight:700}header .brand span{color:var(--gold)}header small{color:#d9d2bf}
+main{max-width:1200px;margin:auto;padding:28px 18px 50px}.intro{text-align:center;margin:12px auto 26px;max-width:720px}.eyebrow{color:#9a7836;text-transform:uppercase;letter-spacing:.22em;font:700 .72rem Arial,sans-serif}.intro h1{font-size:clamp(2rem,5vw,3.3rem);font-weight:normal;color:var(--green);margin:10px 0}.intro p{font-family:Arial,sans-serif;color:var(--muted);line-height:1.6}
+.workspace{display:grid;grid-template-columns:minmax(280px,390px) minmax(300px,1fr);gap:24px;align-items:start}.panel{background:#fffdf8;border:1px solid #e3d8c3;border-radius:18px;padding:22px;box-shadow:0 12px 35px #2d25110c}.panel h2{font-size:1.35rem;color:var(--green);margin:0 0 16px}.field{margin:0 0 14px}.field label{display:block;font:700 .78rem Arial,sans-serif;color:#536158;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:11px 12px;border:1px solid #d8d5c9;border-radius:9px;background:#fff;font: .95rem Arial,sans-serif;color:#23352e}.field textarea{resize:vertical;min-height:78px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.templates{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:18px}.template{border:2px solid #e5dfd0;border-radius:10px;background:white;padding:7px;color:#435047;font: .76rem Arial,sans-serif}.template.active{border-color:var(--gold);box-shadow:0 0 0 2px #c7a45b2a}.swatch{height:56px;border-radius:6px;margin-bottom:7px;display:grid;place-items:center;font-size:1.4rem}.swatch.green{background:#103b32;color:#e4c77f}.swatch.cream{background:#fff4df;color:#96773d}.swatch.rose{background:#f1ded5;color:#8c554e}
+.actions{display:flex;flex-wrap:wrap;gap:9px}.btn{border:0;border-radius:999px;padding:11px 16px;font:700 .86rem Arial,sans-serif;background:var(--green);color:#fff8e7}.btn.secondary{background:#efe6d4;color:#3d4a40}.btn.ghost{background:transparent;border:1px solid #d7ceba;color:#4d5a52}
+.preview-wrap{position:sticky;top:18px}.invite{background:var(--cream);border:1px solid #e4d7bf;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px #2c24110f}.invite.theme-green{background:#103b32;color:#f6efdf}.invite.theme-rose{background:#f7ebe4;color:#4a322d}.invite-header{padding:28px 24px 10px;text-align:center;border-bottom:1px solid #e8dcc6}.invite.theme-green .invite-header{border-color:#1c4d42}.invite.theme-rose .invite-header{border-color:#e9d5c8}.invite-header .bismillah{font-size:1.05rem;letter-spacing:.08em;color:#9a7836;margin-bottom:8px}.invite.theme-green .invite-header .bismillah{color:#e4c77f}.invite.theme-rose .invite-header .bismillah{color:#a66b5d}.invite-header h2{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:normal;margin:0 0 4px;color:var(--green)}.invite.theme-green .invite-header h2{color:#f6efdf}.invite.theme-rose .invite-header h2{color:#6b3f36}.invite-header .and{font-style:italic;color:#9a7836;margin:2px 0 8px}.invite.theme-green .invite-header .and{color:#e4c77f}.invite.theme-rose .invite-header .and{color:#a66b5d}.invite-body{padding:22px 24px 28px;text-align:center;font-family:Arial,sans-serif}.invite-body .detail{margin:14px 0}.invite-body .label{font:700 .72rem Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9a7836;margin-bottom:4px}.invite.theme-green .invite-body .label{color:#e4c77f}.invite.theme-rose .invite-body .label{color:#a66b5d}.invite-body .value{font-size:1.05rem;line-height:1.45}.invite-body .message{margin-top:18px;font-style:italic;color:#5a675f;line-height:1.55}.invite.theme-green .invite-body .message{color:#d9d2bf}.invite.theme-rose .invite-body .message{color:#6b524a}.invite-footer{padding:16px 24px 22px;text-align:center;font: .9rem Arial,sans-serif;color:#6d786f;border-top:1px solid #e8dcc6}.invite.theme-green .invite-footer{border-color:#1c4d42;color:#d9d2bf}.invite.theme-rose .invite-footer{border-color:#e9d5c8;color:#7a5c52}
+@media (max-width:900px){.workspace{grid-template-columns:1fr}.preview-wrap{position:static}}
+@media print{body{background:#fff}header,.intro,.panel{display:none!important}.workspace{display:block}.preview-wrap{position:static}.invite{box-shadow:none;border:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Invite<span>Me</span></div>
+  <small>Wedding Invitation Generator</small>
+</header>
+<main>
+  <div class="intro">
+    <div class="eyebrow">Create & share</div>
+    <h1>Beautiful wedding invitations in minutes</h1>
+    <p>Fill in the details, choose a theme, then download or share your invitation. Everything stays on your device — no accounts, no uploads.</p>
+  </div>
+  <div class="workspace">
+    <div class="panel">
+      <h2>Invitation details</h2>
+      <div class="templates">
+        <button type="button" class="template active" data-theme="cream">
+          <div class="swatch cream">✿</div>
+          Cream
+        </button>
+        <button type="button" class="template" data-theme="green">
+          <div class="swatch green">✿</div>
+          Green
+        </button>
+        <button type="button" class="template" data-theme="rose">
+          <div class="swatch rose">✿</div>
+          Rose
+        </button>
+      </div>
+      <div class="two">
+        <div class="field"><label for="bride">Bride</label><input id="bride" value="Bride's Name"></div>
+        <div class="field"><label for="groom">Groom</label><input id="groom" value="Groom's Name"></div>
+      </div>
+      <div class="two">
+        <div class="field"><label for="date">Date</label><input id="date" type="date" value="2027-08-14"></div>
+        <div class="field"><label for="time">Time</label><input id="time" value="6:00 PM"></div>
+      </div>
+      <div class="field"><label for="venue">Venue</label><input id="venue" value="Wedding Venue"></div>
+      <div class="field"><label for="address">Address</label><input id="address" value="Add venue address here"></div>
+      <div class="field"><label for="host">Hosted by</label><input id="host" value="With love, our families"></div>
+      <div class="field"><label for="message">Message</label><textarea id="message">With the blessings of Allah, we warmly invite you to celebrate this special day with us. Your presence and duas will mean so much.</textarea></div>
+      <div class="actions">
+        <button type="button" class="btn" id="download">Download / Print</button>
+        <button type="button" class="btn secondary" id="share">Share on WhatsApp</button>
+        <button type="button" class="btn ghost" id="reset">Reset</button>
+      </div>
+    </div>
+    <div class="preview-wrap">
+      <div class="invite" id="invite">
+        <div class="invite-header">
+          <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <h2 id="pBride">Bride's Name</h2>
+          <div class="and">&amp;</div>
+          <h2 id="pGroom">Groom's Name</h2>
+        </div>
+        <div class="invite-body">
+          <div class="detail"><div class="label">Date</div><div class="value" id="pDate">DATE TO BE ANNOUNCED</div></div>
+          <div class="detail"><div class="label">Time</div><div class="value" id="pTime">Time to be announced</div></div>
+          <div class="detail"><div class="label">Venue</div><div class="value" id="pVenue">Venue to be announced</div></div>
+          <div class="detail"><div class="label">Address</div><div class="value" id="pAddress">Add venue address here</div></div>
+          <div class="message" id="pMessage">We warmly invite you to celebrate with us.</div>
+        </div>
+        <div class="invite-footer" id="pHost">With love</div>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const fields=['bride','groom','date','time','venue','address','host','message'];
+function update(){
+$('pBride').textContent=$('bride').value||"Bride's Name";
+$('pGroom').textContent=$('groom').value||"Groom's Name";
+const d=$('date').value?new Date($('date').value+'T12:00:00'):null;
+$('pDate').textContent=d?d.toLocaleDateString('en-IN',{month:'long',day:'numeric',year:'numeric'}).toUpperCase():'DATE TO BE ANNOUNCED';
+$('pTime').textContent=$('time').value||'Time to be announced';
+$('pVenue').textContent=$('venue').value||'Venue to be announced';
+$('pAddress').textContent=$('address').value||'';
+$('pHost').textContent=$('host').value||'With love';
+$('pMessage').textContent=$('message').value||'We warmly invite you to celebrate with us.';
+}
+fields.forEach(id=>$(id).addEventListener('input',update));
+document.querySelectorAll('.template').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.template').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+ $('invite').className='invite'+(btn.dataset.theme==='cream'?'':' theme-'+btn.dataset.theme);
+}));
+$('download').addEventListener('click',()=>window.print());
+$('share').addEventListener('click',()=>{
+ const d=$('date').value?new Date($('date').value+'T12:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}):'Date to be announced';
+ const text=`Assalamu Alaikum 🌙\n\nWith the blessings of Allah, we warmly invite you to the wedding of ${$('bride').value} & ${$('groom').value}.\n\n📅 Date: ${d}\n🕰️ Time: ${$('time').value}\n📍 Venue: ${$('venue').value}\n${$('address').value}\n\n${$('message').value}\n\n${$('host').value}\n\nPlease join us and remember us in your duas.`;
+ window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank','noopener,noreferrer');
+});
+$('reset').addEventListener('click',()=>{
+ const defaults={bride:"Bride's Name",groom:"Groom's Name",date:'2027-08-14',time:'6:00 PM',venue:'Wedding Venue',address:'Add venue address here',host:'With love, our families',message:'With the blessings of Allah, we warmly invite you to celebrate this special day with us. Your presence and duas will mean so much.'};
+ Object.entries(defaults).forEach(([k,v])=>$(k).value=v);
+ document.querySelectorAll('.template').forEach(b=>b.classList.remove('active'));document.querySelector('[data-theme="cream"]').classList.add('active');$('invite').className='invite';update();
+});
+update();
+</script>
+</body>
+</html>
